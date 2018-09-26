@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using FakeItEasy;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Xunit;
 
 namespace IT2media.Extensions.Configuration.xUnitTests
@@ -8,29 +9,35 @@ namespace IT2media.Extensions.Configuration.xUnitTests
     public class OptionsBinderTest
     {
         [Fact]
-        public void ShouldThrowArgumentNullExceptionIfActionNoActionIsProvided()
-        {
-            Assert.Throws<ArgumentNullException>(() =>
-            {
-                var configuration = A.Fake<IConfiguration>();
-                IOptionsBinder optionsBinder = new OptionsBinder(configuration);
-                optionsBinder.InitOptions(null);
-            });
-        }
-
-        [Fact]
-        public void ShouldNotThrowArgumentNullExceptionIfEmptyActionIsProvided()
+        public void RegisterOptionTest()
         {
             var configuration = A.Fake<IConfiguration>();
             IOptionsBinder optionsBinder = new OptionsBinder(configuration);
-            optionsBinder.InitOptions(EmptyAction);
 
-            Assert.True(optionsBinder != null);
+            Type testType = null;
+            object testObject = null;
+
+            optionsBinder.RegisterOption<TestOption>((type, o) => { testType = type;
+                testObject = o;
+            });
+
+            Assert.True(testType == typeof(IOptions<TestOption>));
+
+            Assert.NotNull((IOptions<TestOption>) testObject);
+            Assert.NotNull(((IOptions<TestOption>) testObject).Value);
         }
 
-        private static void EmptyAction(Type type, object obj)
+        [Fact]
+        public void BindActionTest()
         {
+            var configuration = A.Fake<IConfiguration>();
+            IOptionsBinder optionsBinder = new OptionsBinder(configuration);
 
+            var action = optionsBinder.BindAction<TestOption>();
+
+            Assert.NotNull(action);
         }
     }
+
+    public class TestOption { }
 }

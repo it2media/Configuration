@@ -9,6 +9,12 @@
     <Version>2.0.1</Version>
     <FileVersion>2.0.1.0</FileVersion>
     <AssemblyVersion>2.0.1.0</AssemblyVersion>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/it2media/Configuration/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/it2media/Configuration</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/it2media/Home/master/Logo_IT2media_2015_64x64.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/it2media/Configuration.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>IOptions IConfiguration IServiceCollection IContainerRegistry ContainerRegistry ServiceCollection Configuration Options</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

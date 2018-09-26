@@ -7,7 +7,7 @@ namespace IT2media.Extensions.Configuration
 {
     public static class ConfigurationServiceCollectionExtensions
     {
-        public static IServiceCollection InitOptionModels(this IConfiguration configuration, IServiceCollection serviceCollection)
+        public static IServiceCollection InitOptions(this IConfiguration configuration, IServiceCollection serviceCollection)
         {
             IOptionsBinder optionsBinder = new OptionsBinder(configuration);
 

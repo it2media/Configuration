@@ -5,7 +5,7 @@ namespace IT2media.Extensions.Configuration
 {
     public static class ConfigurationContainerRegistryExtensions
     {
-        public static IConfiguration InitOptionModels(this IConfiguration configuration, Action<Type, object> registerInstance)
+        public static IConfiguration InitOptions(this IConfiguration configuration, Action<Type, object> registerInstance)
         {
             IOptionsBinder optionsBinder = new OptionsBinder(configuration);
 

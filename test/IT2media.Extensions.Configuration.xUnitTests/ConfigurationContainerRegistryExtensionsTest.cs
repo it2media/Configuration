@@ -15,15 +15,15 @@ namespace IT2media.Extensions.Configuration.xUnitTests
                 var configuration = A.Fake<IConfiguration>();
                 Action<Type, object> registerInstance = null;
                 // ReSharper disable once ExpressionIsAlwaysNull
-                configuration.InitOptionModels(registerInstance);
+                configuration.InitOptions(registerInstance);
             });
         }
 
         [Fact]
-        public void ShouldNotThrowArgumentNullExceptionIfEmptyActionIsProvided()
+        public void ShouldNotThrowExceptionIfEmptyActionIsProvided()
         {
             var configuration = A.Fake<IConfiguration>();
-            configuration.InitOptionModels(EmptyAction);
+            configuration.InitOptions(EmptyAction);
 
             Assert.True(configuration != null);
         }

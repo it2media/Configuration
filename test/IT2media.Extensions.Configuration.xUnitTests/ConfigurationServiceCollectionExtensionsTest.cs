@@ -8,12 +8,12 @@ namespace IT2media.Extensions.Configuration.xUnitTests
     public class ConfigurationServiceCollectionExtensionsTest
     {
         [Fact]
-        public void ShouldNotThrowArgumentNullExceptionIfEmptyActionIsProvided()
+        public void ShouldNotThrowException()
         {
             var configuration = A.Fake<IConfiguration>();
             var serviceCollection = A.Fake<IServiceCollection>();
 
-            configuration.InitOptionModels(serviceCollection);
+            configuration.InitOptions(serviceCollection);
 
             Assert.True(configuration != null);
         }
